@@ -22,7 +22,7 @@
                     @endif
 
                     
-                    <form class="col-md-4" method="POST" action="{{ route('task-update'.$taskLists->id)}}">
+                    <form class="col-md-4" method="POST" action="{{ route('task-update', $taskLists->id)}}">
                         @csrf
                         @method('PUT')
                         <div class="form-group ">

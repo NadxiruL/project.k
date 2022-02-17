@@ -22,7 +22,7 @@
                     @endif
 
                     
-                    <form class="col-md-4" method="POST" action="{{ route('category') }}">
+                    <form class="col-md-4" method="POST" action="{{ route('category-add') }}">
                         @csrf
                         <div class="form-group ">
                             <label for="exampleInputEmail1">Add Category</label>

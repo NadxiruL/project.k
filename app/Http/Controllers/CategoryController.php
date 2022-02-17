@@ -37,14 +37,14 @@ class CategoryController extends Controller
     {
        
         $request->validate([
-            'type' => ['required', 'string'],
+            'type' => ['required', 'string' , 'unique'],
         ]);
 
         $category = Category::create([
             'type' => $request->type,
         ]);
 
-        return redirect()->route('category')->with('success' , 'Data has been added!');
+        return redirect()->route('category-list')->with('success' , 'Data has been added!');
     }
 
     /**
@@ -55,7 +55,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $categories = Category::with('task')->get();
+        $categories = Category::all();
         return view('categorylist',[
             'categories' => $categories,
         ]);

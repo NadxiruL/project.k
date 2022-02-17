@@ -31,7 +31,7 @@
                            
                                 <td>{{$taskList->taskname}}</td>
                                 <td>{{$taskList->date}}</td>
-                                <td>{{$taskList->category->type}}</td>
+                                <td>{{$taskList->category->type ?? ''}}</td>
                                 <td>
                                     <form action="{{ route('task-delete' ,  $taskList->id)}}" method="POST"
                                         class="d-inline"
