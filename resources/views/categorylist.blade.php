@@ -33,7 +33,7 @@
                                 
                               
                                 <td>
-                                    <form action="{{ route('category-edit' ,  $category->id)}}" method="POST"
+                                    <form action="{{ route('category-delete' ,  $category->id)}}" method="POST"
                                         class="d-inline"
                                     onsubmit="return confirm('are you sure you want to delete {{$category->name}} ? ') ">
                                         @csrf

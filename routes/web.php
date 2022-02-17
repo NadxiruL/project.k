@@ -27,7 +27,7 @@ Route::get('/task', [TaskController::class, 'index'])->name('task');
 Route::post('/task', [TaskController::class, 'store'])->name('task-add');
 Route::get('/tasklist', [TaskController::class, 'show'])->name('task-list');
 Route::get('/tasklist/{id}',[TaskController::class, 'edit'])->name('task-edit');
-Route::put('/tasklist/{id}', [TaskController::class, 'update']);
+Route::put('/tasklist/{id}', [TaskController::class, 'update'])->name('task-update');
 Route::delete('/tasklist/{id}', [TaskController::class, 'destroy'])->name('task-delete');
 
 
@@ -38,6 +38,7 @@ Route::get('/category/add', [CategoryController::class, 'create'])->name('create
 Route::get('/categorylist/{id}',[CategoryController::class, 'edit'])->name('category-edit');
 Route::put('/categorylist/{id}', [CategoryController::class, 'update'])->name('category-update');
 Route::post('/category', [CategoryController::class, 'store'])->name('category-add');
+Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category-delete');
 
 
 
