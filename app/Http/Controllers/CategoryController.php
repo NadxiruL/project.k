@@ -37,7 +37,7 @@ class CategoryController extends Controller
     {
        
         $request->validate([
-            'type' => ['required', 'string' , 'unique'],
+            'type' => ['required', 'string'],
         ]);
 
         $category = Category::create([
