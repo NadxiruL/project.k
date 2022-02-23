@@ -34,6 +34,9 @@
                                 placeholder="date">
                         </div>
                         <div class="form-group">
+                            <input type="hidden" name="status" value="Incomplete" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputPassword1">Category</label>
                             <select name="category_id" class="form-control" id="exampleFormControlSelect1">
                                 @foreach ($categories as $category)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Status;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -57,6 +58,11 @@ class TaskController extends Controller
              'category_id' => $request->category_id,
         ]);
 
+        $status = Status::create([
+            'task_id' =>$request->task_id,
+            'status' => $request->status,
+        ]);
+
         return redirect()->route('task')->with('success' , 'Data has been added!');
     }
 
@@ -68,8 +74,11 @@ class TaskController extends Controller
      */
     public function show()
     {
-        $taskLists = Task::all()->except(['created_at','update_at']);
+        $taskLists = Task::with('status')->get();
+        $statuses = Status::all();
+
         return view('tasklist',[
+            'statuses' => $statuses,
             'taskLists' => $taskLists,
         ]);
 
@@ -129,6 +138,19 @@ class TaskController extends Controller
         $taskLists->delete();
 
         return redirect()->route('task-list');
+    }
+
+    public function taskStatus(Request $request, $id){
+
+        $taskStatus = Status::find($id);
+        $taskStatus->status = $request->input('status');
+        $taskStatus->task_id = $request->input('task_id');
+        $taskStatus->update();
+
+        // return redirect()->route('task-update')
+        //     ->with('success', 'Task updated!');
+        return redirect()->back()->with('success','Task updated successfully');
+
     }
 
     

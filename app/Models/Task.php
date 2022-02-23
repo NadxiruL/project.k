@@ -15,4 +15,10 @@ class Task extends Model
     {
         return $this->belongsTo(Category::class, 'category_id' , 'id');
     }
+
+    public function status()
+    {
+
+        return $this->hasMany(Status::class);
+    }
 }

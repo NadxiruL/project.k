@@ -20,18 +20,23 @@
                                 <th scope="col">Task</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Category</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                         
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($taskLists as $taskList)
+                           
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
                            
                                 <td>{{$taskList->taskname}}</td>
                                 <td>{{$taskList->date}}</td>
-                                <td>{{$taskList->category->type ?? ''}}</td>
+                                <td>{{$taskList->category->type ?? 'Unknown'}}</td>
+                                @foreach ($statuses as $status)
+                                <td>{{$status->status}}</td>
+                                @endforeach
                                 <td>
                                     <form action="{{ route('task-delete' ,  $taskList->id)}}" method="POST"
                                         class="d-inline"
@@ -42,10 +47,24 @@
                                     <button class="btn btn-danger">Delete</button>
                                 </form>
                                  <a href="{{route('task-edit' ,$taskList->id)}}"class="btn btn-secondary">Edit</a>
+
+                                 <form action="{{ route('status-update' ,  $taskList->id)}}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('put')
+                                    <input type="hidden" value="{{$taskList->id}}" name="task_id">
+                                    <input type="hidden" value="Complete" name="status" >
+                                    
+                                     <button class="btn btn-success">Done</button>
+                                    
+                                     <button type="button" class="btn btn-success" disabled>Done</button>
+                                    
+                                   
+                            </form>
                                 </td>
                        
                     
                             </tr>
+                         
                             @endforeach
                         </tbody>
                     </table>
