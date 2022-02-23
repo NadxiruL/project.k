@@ -19,6 +19,6 @@ class Task extends Model
     public function status()
     {
 
-        return $this->hasOne(Status::class);
+        return $this->hasOne(Status::class, 'task_id' , 'id');
     }
 }

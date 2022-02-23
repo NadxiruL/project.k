@@ -48,7 +48,6 @@ class TaskController extends Controller
         $request->validate([
             'task' => ['required', 'string'],
             'date' => ['required', 'date'],
-            'date' => ['required']
         ]);
 
         
@@ -59,7 +58,7 @@ class TaskController extends Controller
         ]);
 
         $status = Status::create([
-            'task_id' =>$request->task_id,
+            'task_id'=> $request->task_id,
             'status' => $request->status,
         ]);
 
@@ -75,11 +74,10 @@ class TaskController extends Controller
     public function show()
     {
         $taskLists = Task::with('status')->get();
-         $statuses = Status::all();
-
+      
         return view('tasklist',[
-             'statuses' => $statuses,
             'taskLists' => $taskLists,
+           
         ]);
 
        
