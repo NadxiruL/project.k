@@ -13,6 +13,6 @@ class Status extends Model
 
     public function task(){
 
-        return $this->belongsTo(Task::class, 'task_id' , 'id');
+        return $this->belongsTo(Task::class);
     }
 }

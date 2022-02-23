@@ -34,9 +34,8 @@
                                 <td>{{$taskList->taskname}}</td>
                                 <td>{{$taskList->date}}</td>
                                 <td>{{$taskList->category->type ?? 'Unknown'}}</td>
-                                @foreach ($statuses as $status)
-                                <td>{{$status->status}}</td>
-                                @endforeach
+                                <td>{{$taskList->status->status ?? 'Incomplete'}}</td>
+                               
                                 <td>
                                     <form action="{{ route('task-delete' ,  $taskList->id)}}" method="POST"
                                         class="d-inline"
@@ -53,10 +52,12 @@
                                     @method('put')
                                     <input type="hidden" value="{{$taskList->id}}" name="task_id">
                                     <input type="hidden" value="Complete" name="status" >
+                           
+                                <button class="btn btn-success">Done</button>
+                            
+                            
                                     
-                                     <button class="btn btn-success">Done</button>
-                                    
-                                     <button type="button" class="btn btn-success" disabled>Done</button>
+                                   
                                     
                                    
                             </form>
