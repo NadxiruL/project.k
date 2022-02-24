@@ -74,9 +74,11 @@ class TaskController extends Controller
     public function show()
     {
         $taskLists = Task::with('status')->get();
+        $statuses = Status::all();
       
         return view('tasklist',[
             'taskLists' => $taskLists,
+            'statuses' => $statuses,
            
         ]);
 
