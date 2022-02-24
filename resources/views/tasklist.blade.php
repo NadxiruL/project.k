@@ -52,9 +52,11 @@
                                     @method('put')
                                     <input type="hidden" value="{{$taskList->id}}" name="task_id">
                                     <input type="hidden" value="Complete" name="status" >
-                         
-                                <button class="btn btn-success">Done</button>
-                   
+                          @if($taskList->status->status ?? '')
+                                <button class="btn btn-success disabled">Done</button>
+                          @else
+                            <button class="btn btn-success">Done</button>
+                          @endif
                             
                                     
                                    

@@ -48,6 +48,7 @@ class TaskController extends Controller
         $request->validate([
             'task' => ['required', 'string'],
             'date' => ['required', 'date'],
+            
         ]);
 
         
@@ -73,13 +74,11 @@ class TaskController extends Controller
      */
     public function show()
     {
-        $taskLists = Task::with('status')->get();
+        $taskLists = Task::with('status')->orderBy('id', 'DESC')->get();
         $statuses = Status::all();
       
         return view('tasklist',[
             'taskLists' => $taskLists,
-            'statuses' => $statuses,
-           
         ]);
 
        
