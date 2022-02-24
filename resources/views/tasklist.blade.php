@@ -52,9 +52,9 @@
                                     @method('put')
                                     <input type="hidden" value="{{$taskList->id}}" name="task_id">
                                     <input type="hidden" value="Complete" name="status" >
-                           @if ($statuses->status == 'Incomplete')
+                         
                                 <button class="btn btn-success">Done</button>
-                          @endif
+                   
                             
                                     
                                    
