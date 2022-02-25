@@ -79,7 +79,7 @@ class TaskController extends Controller
      */
     public function show()
     {
-        $taskLists = Task::with('status')->orderBy('id', 'DESC')->get();
+        $taskLists = Task::with('status')->orderBy('status', 'DESC')->get();
         $statuses = Status::all();
       
         return view('tasklist',[
