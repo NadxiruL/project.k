@@ -63,6 +63,11 @@ class TaskController extends Controller
             'status' => $request->status,
         ]);
 
+        // if ($request->task_id == null || $request->status == null)
+        // {
+        //     return redirect()->back();
+        // }
+
         return redirect()->route('task')->with('success' , 'Data has been added!');
     }
 
